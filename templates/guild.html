@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XGN BOT Dashboard - {{guild['name']}}</title>
+  <meta name="description" content="XGN BOT is a very powerfull bot">
+  <meta name="theme-color" content="#00aaff">
+  <link rel="icon" type="image/png" sizes="300x250" href="../static/assets/img/superthumb.png">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+  <link rel="stylesheet" href="../static/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/assets/fonts/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="../static/assets/css/styles.css">
+  <link rel="stylesheet" href="../static/assets/css/side-bar.css">
+  <!-- Boxiocns CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      homeRoute()
+    }
+  </script>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i class='bx bxl-discord'></i>
+      <span class="logo_name">XGN BOT</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a OnClick="homeRoute()">
+          <i class='bx bx-home'></i>
+          <span class="link_name">Server</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="homeRoute()">Server</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="welcomeRoute()">
+          <i class='bx bx-log-in-circle'></i>
+          <span class="link_name">welcome</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="welcomeRoute()">Welcome</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="leaveRoute()">
+          <i class='bx bx-log-out-circle'></i>
+          <span class="link_name">Leave</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="leaveRoute()">Leave</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="levelRoute()">
+          <i class='bx bx-stats'></i>
+          <span class="link_name">Leveling System</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="levelRoute()">Leveling System</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="logRoute()">
+          <i class='bx bx-history'></i>
+          <span class="link_name">Logging</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="logRoute()">Logging</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="settingsRoute()">
+          <i class='bx bx-cog'></i>
+          <span class="link_name">Settings</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="settingsRoute()">Settings</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/leaderboard/{{guild['id']}}">
+          <i class='bx bx-align-justify'></i>
+          <span class="link_name">Leaderboard</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/leaderboard/{{guild['id']}}">Leaderboard</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/dashboard">
+          <i class='bx bx-arrow-back'></i>
+          <span class="link_name">Back to Servers List</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/dashboard">Back to Server List</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="https://cdn.discordapp.com/avatars/{{user['id']}}/{{user['avatar']}}.png" alt="">
+          </div>
+          <div class="name-job">
+            <div class="profile_name">{{user['username']}}#{{user['discriminator']}}</div>
+          </div>
+          <a href="/logout"><i class='bx bx-log-out'></i></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section" style="background: #2c2f33;">
+    <div class="home-content">
+      <i class='bx bx-menu'></i>
+      <span class="text ">
+        <h1 style="color: var(--text-color); margin-top:20px;">
+          {% if guild['icon'] %}
+          <img style="width: 50px; border-radius: 50%"
+            src="https://cdn.discordapp.com/icons/{{guild['id']}}/{{guild['icon']}}.png?size=64">
+          {% else %}
+          <img style="width: 50px; border-radius: 50%"
+            src="https://www.shitpostbot.com/resize/585/400?img=%2Fimg%2Fsourceimages%2Fdefault-discord-icon-5b254285e1034.png">
+          {% endif %}
+          {{guild['name']}}
+        </h1>
+      </span>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="features-boxed" style="background: #2c2f33;" id="home">
+            <div class="card" style="border-radius: 30px; background: var(--background);" id="info">
+              <div class="card-body">
+                <h1 style="color: var(--main-color);">Server Info</h1>
+                <p style="color: var(--text-color);">Members: <b
+                    style="color: var(--secondary-text-color);">{{members}}</b>
+                </p>
+                <p style="color: var(--text-color);">Real people: <b
+                    style="color: var(--secondary-text-color);">{{people}}</b></p>
+                <p style="color: var(--text-color);">Bots: <b
+                    style="color: var(--secondary-text-color);">{{bot_count}}</b>
+                </p>
+                <p style="color: var(--text-color);">Text Chanels: <b
+                    style="color: var(--secondary-text-color);">{{tc}}</b>
+                </p>
+                <p style="color: var(--text-color);">Voice Channels: <b
+                    style="color: var(--secondary-text-color);">{{voice_c}}</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card" style="border-radius: 30px; background: var(--background);" id="plugins">
+            <div class="card-body">
+              <h1 style="color: var(--main-color);">Plugins</h1>
+              <p style="color: var(--text-color);">welcome: <b style="color: var(--secondary-text-color);">{% if
+                  welcome_enabled %} <button style="background: #008000;" button type="button"
+                    class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                    type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+              </p>
+              <p style="color: var(--text-color);">Leave: <b style="color: var(--secondary-text-color);">{% if
+                  leave_enabled %} <button style="background:#008000;" button type="button"
+                    class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                    type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+              </p>
+              <p style="color: var(--text-color);">Level system: <b style="color: var(--secondary-text-color);">{% if
+                  level_up_enabled %} <button style="background: #008000;" button type="button"
+                    class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                    type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+              </p>
+              <p style="color: var(--text-color);">Logging: <b style="color: var(--secondary-text-color);">{% if
+                  log_enabled %} <button style="background: #008000;" button type="button"
+                    class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                    type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="background: var(--background); border-radius: 30px;" id="prefix">
+          <div class="card-body">
+            <div class="prefix">
+              <h2>Prefix: {{prefix}}</h2>
+              <label for="prefix">Select the prefix for the server</label>
+              <input placeholder="prefix" type="text" maxlength="5" id="prefix" class="form-control"
+                style="width:200px; color:var(--text-color); background: #2c2f33;"><br>
+              <button onclick="changePrefix()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary); float: left;">Save</button>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="card" style="background: var(--background); border-radius: 30px;" id="welcome">
+          <div class="card-body">
+            <div>
+              <h2>Welcomeing Members</h2>
+              {% if welcome_enabled %}
+
+              <p>current config:
+              <ul>
+                {% if welcome_channel and welcome_message %}
+                <li>message: <b style="color: var(--main-color)">{{welcome_message}}</b></li>
+                <li>channel: #{{welcome_channel}}</li>
+                {%else%}
+                <li>channel: <b style="color: var(--main-color)">none</b></li>
+                <li>channel: none</li>
+                {% endif %}
+              </ul>
+              </p>
+              <br>
+              <label for="w-c">Select the channel for the welcome message</label><br>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);" id="welcome-channel">
+                <option selected>Select the channel</option>
+                {% for channel in text_channels %}
+                <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                {%endfor%}
+              </select>
+              <br>
+              <br>
+              <label for="welcome">Select the message for the welcome event</label>
+
+              {% if welcome_channel and welcome_message %}
+              <textarea placeholder="message" type="text"
+                style="color:var(--text-color); background: #2c2f33; width:500px" id=" welcome-message"
+                class="form-control" rows="3"></textarea>
+
+              {% else %}
+              <textarea placeholder="message" type="text"
+                style="color:var(--text-color); background: #2c2f33; width:500px" id="welcome-message"
+                value="Welcome {mention} in {guild}. You are the member {members}" class="form-control"
+                rows="3"></textarea>
+              {% endif %}
+
+              <br>
+              <button onclick="changeWelcome()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Save</button>
+              <button onclick="disableWelcome()" button type="button" class="btn btn-outline-light"
+                style="background: red; float: right;">Disable</button><br>
+
+              {% else %}
+              <button onclick="enableWelcome()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Enable</button><br>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="card" style="background: var(--background); border-radius: 30px;" id="leave">
+          <div class="card-body">
+            <div>
+              <h2>Leave Message</h2>
+              {% if leave_enabled %}
+
+              <p>current config:
+              <ul>
+                {% if leave_channel and leave_message %}
+                <li>message: <b style="color: var(--main-color)">{{leave_message}}</b></li>
+                <li>channel: #{{leave_channel}}</li>
+                {%else%}
+                <li>message: <b style="color: var(--main-color)">none</b></li>
+                <li>channel: none</li>
+                {% endif %}
+              </ul>
+              </p>
+              <br>
+              <label for="leav-c">Select the channel for the leave message</label><br>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);" id="leave-channel">
+                <option selected>Select the channel</option>
+                {% for channel in text_channels %}
+                <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                {%endfor%}
+              </select>
+              <br>
+              <br>
+              <label for="leave">Select the mesage used by the bot when someone leaves your server</label>
+
+              {% if leave_message %}
+              <textarea placeholder="message" style="color:var(--text-color); background: #2c2f33; width:500px"
+                type="text" id="leave-message" class="form-control" rows="3"></textarea>
+              {% else %}
+              <textarea placeholder="message" style="color:var(--text-color); background: #2c2f33; width:500px"
+                type="text" id="leave-message" class="form-control" value="{} left the server. :|" rows="3"></textarea>
+              {% endif %}
+
+              <br>
+              <button onclick="changeLeave()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Save</button>
+              <button onclick="disableLeave()" button type="button" class="btn btn-outline-light"
+                style="background: red; float: right;">Disable</button><br>
+
+              {% else %}
+              <button onclick="enableLeave()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Enable</button><br>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="card" style="background: var(--background); border-radius: 30px;" id="levelling">
+          <div class="card-body">
+            <div>
+              <h2>Leveling</h2>
+              {% if level_up_enabled %}
+
+              <p>current config:
+              <ul>
+                {% if level_channel and level_message %}
+                <li>message: <b style="color: var(--main-color)">{{level_message}}</b></li>
+                <li>channel: #{{level_channel}}</li>
+                {%else%}
+                <li>message: <b style="color: var(--main-color)">none</b></li>
+                <li>channel: none</li>
+                {% endif %}
+              </ul>
+              </p>
+              <br>
+              <label for="lev-c">Select the channel for the level up message</label><br>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);" id="level-channel">
+                <option selected>Select the channel</option>
+                {% for channel in text_channels %}
+                <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                {%endfor%}
+              </select>
+              <br>
+              <br>
+              <label for="level">Select the message for the level up message</label>
+              {% if level_message %}
+              <textarea placeholder="message" type="text"
+                style="color:var(--text-color); background: #2c2f33; width:500px" id="level-message"
+                class="form-control" rows="3"></textarea>
+              {% else %}
+              <textarea placeholder="message" type="text"
+                style="color:var(--text-color); background: #2c2f33; width:500px" id="level-message"
+                class="form-control" rows="3" value="{mention} has leveled up - current level {level}"></textarea>
+              {%endif%}
+
+              <br>
+              <button onclick="changeLevels()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Save</button>
+              <button onclick="disableLevels()" button type="button" class="btn btn-outline-light"
+                style="background: red; float: right;">Disable</button><br>
+
+              {% else %}
+              <button onclick="enableLevels()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Enable</button><br>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="card" style="background: var(--background); border-radius: 30px;" id="log">
+          <div class="card-body">
+            <div>
+              <h2>Logging Events</h2>
+              {% if log_enabled %}
+
+              <p>current config:
+              <ul>
+                {% if log_channel %}
+                <li>channel: #{{log_channel}}</li>
+                {%else%}
+                <li>channel: none</li>
+                {% endif %}
+              </ul>
+              </p>
+              <br>
+              <label for="log-c">Select the channel for the log message</label><br>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);" id="log-channel">
+                <option selected>Select the channel</option>
+                {% for channel in text_channels %}
+                <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                {%endfor%}
+              </select>
+              <br>
+              <br>
+              <button onclick="changeLog()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Save</button>
+              <button onclick="disableLog()" button type="button" class="btn btn-outline-light"
+                style="background: red; float: right;">Disable</button>
+              <br>
+
+              {% else %}
+              <button onclick="enableLog()" button type="button" class="btn btn-outline-light"
+                style="background: var(--secondary);">Enable</button><br>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    const homeRoute = () => {
+      const home = document.getElementById('home').style.display = "block";
+      const plugins = document.getElementById('plugins').style.display = "block"
+      const welcome = document.getElementById('welcome').style.display = "none";
+      const leave = document.getElementById('leave').style.display = "none";
+      const levelling = document.getElementById('levelling').style.display = "none";
+      const log = document.getElementById('log').style.display = "none";
+      const settings = document.getElementById('prefix').style.display = "none"
+    }
+    const welcomeRoute = () => {
+      const home = document.getElementById('home').style.display = "none";
+      const plugins = document.getElementById('plugins').style.display = "none"
+      const welcome = document.getElementById('welcome').style.display = "block";
+      const leave = document.getElementById('leave').style.display = "none";
+      const levelling = document.getElementById('levelling').style.display = "none";
+      const log = document.getElementById('log').style.display = "none";
+      const settings = document.getElementById('prefix').style.display = "none"
+    }
+    const leaveRoute = () => {
+      const home = document.getElementById('home').style.display = "none";
+      const plugins = document.getElementById('plugins').style.display = "none"
+      const welcome = document.getElementById('welcome').style.display = "none";
+      const leave = document.getElementById('leave').style.display = "block";
+      const levelling = document.getElementById('levelling').style.display = "none";
+      const log = document.getElementById('log').style.display = "none";
+      const settings = document.getElementById('prefix').style.display = "none"
+    }
+    const levelRoute = () => {
+      const home = document.getElementById('home').style.display = "none";
+      const plugins = document.getElementById('plugins').style.display = "none"
+      const welcome = document.getElementById('welcome').style.display = "none";
+      const leave = document.getElementById('leave').style.display = "none";
+      const levelling = document.getElementById('levelling').style.display = "block";
+      const log = document.getElementById('log').style.display = "none";
+      const settings = document.getElementById('prefix').style.display = "none"
+    }
+    const logRoute = () => {
+      const home = document.getElementById('home').style.display = "none";
+      const plugins = document.getElementById('plugins').style.display = "none"
+      const welcome = document.getElementById('welcome').style.display = "none";
+      const leave = document.getElementById('leave').style.display = "none";
+      const levelling = document.getElementById('levelling').style.display = "none";
+      const log = document.getElementById('log').style.display = "block";
+      const settings = document.getElementById('prefix').style.display = "none"
+    }
+    const settingsRoute = () => {
+      const home = document.getElementById('home').style.display = "none";
+      const plugins = document.getElementById('plugins').style.display = "none"
+      const welcome = document.getElementById('welcome').style.display = "none";
+      const leave = document.getElementById('leave').style.display = "none";
+      const levelling = document.getElementById('levelling').style.display = "none";
+      const log = document.getElementById('log').style.display = "none";
+      const settings = document.getElementById('prefix').style.display = "block"
+    }
+  </script>
+  <script src="../static/assets/js/ApiRequests.js"></script>
+  <script src="../static/assets/js/jquery.min.js"></script>
+  <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/assets/js/Counting.js"></script>
+  <script src="../static/assets/js/untitled.js"></script>
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  </div>
+  <script src="../static/assets/js/side-bar.js"></script>
+
+</body>
+
+</html>

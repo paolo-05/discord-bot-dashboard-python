@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>XGN BOT Dashboard - Guilds</title>
+    <meta name="description" content="XGN BOT is a very powerfull bot">
+    <meta name="theme-color" content="#00aaff">
+    <link rel="icon" type="image/png" sizes="300x250" href="../static/assets/img/superthumb.png">
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="../static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+</head>
+
+<body style="background: var(--background);">
+    <div id="top" style="height: 12px;">
+        <nav class="navbar navbar-light navbar-expand fixed-top"
+            style="color: var(--main-color);border-top-width: 6px;border-top-style: solid;background: var(--background);">
+            <div class="container-fluid"><a class="navbar-brand" href="#"
+                    style="color: var(--main-color);font-family: 'Alfa Slab One', cursive;">XGN BOT</a><button
+                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                        navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link active smoothScroll" href="/"
+                                style="color: var(--text-color);">See Features</a></li>
+                        <li class="nav-item"><a class="nav-link smoothScroll" href="/"
+                                style="color: var(--text-color);">Commands</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                onClick="window.open('https://cutt.ly/XGNbot', 'Invite', 'width=450,height=750')"
+                                style="color: var(--text-color);">Invite</a></li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--main-color);">Dashboard</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://discord.gg/8V62RTS25Q"
+                                style="color: var(--text-color);">Support Guild</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <header class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
+        style="text-align: center; margin-top: 150px;">
+        <h1 class="d-xl-flex justify-content-xl-start" style="color: var(--text-color);">XGN BOT dashboard</h1>
+        <p style="color: var(--secondary-text-color);">Welcome there.<br>Here you can see all the servers that you can
+            modify.<br>If you don't see a server maybe you aren't a server mod</p>
+    </header>
+    <div class="container">
+        <h1>Guilds [{{ n_guilds }}]</h1>
+        <br />
+        <br />
+        {% for guild in mutual_guilds %}
+        <div class="tada animated">
+            <div class="card" style="background: #2c2f33; border-radius: 30px;">
+                <div class="card-body">
+                    {% if guild['icon'] %}
+                    <img style="width: 50px; border-radius: 50%"
+                        src="https://cdn.discordapp.com/icons/{{guild['id']}}/{{guild['icon']}}.png?size=64">
+                    {% else %}
+                    <img style="width: 50px; border-radius: 50%"
+                        src="https://www.shitpostbot.com/resize/585/400?img=%2Fimg%2Fsourceimages%2Fdefault-discord-icon-5b254285e1034.png">
+                    {% endif %}
+                    &nbsp;
+                    <a href="/guild/{{guild['id']}}" style="color: var(--text-color);">{{guild['name']}}</a>
+
+                    <button type="button" class="btn btn-primary"
+                        style="float: right; background: var(--main-color); border-radius:30px"
+                        onclick=window.location="/guild/{{guild['id']}}">Go to the
+                        dashboard</button>
+                    <button type="button" class="btn btn-primary"
+                        style="float: right; background: var(--main-color); border-radius:30px"
+                        onclick=window.location="/leaderboard/{{guild['id']}}">Go to the
+                        Leaderboard</button>
+                </div>
+            </div>
+        </div><br />
+        {%else%}
+        <div class="tada animated">
+            <div role="group" class="btn-group">
+                <a href="https://cutt.ly/XGNbot" class="btn btn-primary shadow-none" type="button"
+                    style="margin: 5px;background-color: #7289da;border-color: #7289da;border-radius: 10px;">Invite
+                    Me</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="var(--secondary)" fill-opacity="1"
+            d="M0,160L48,154.7C96,149,192,139,288,154.7C384,171,480,213,576,218.7C672,224,768,192,864,181.3C960,171,1056,181,1152,192C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        </path>
+    </svg>
+    <div class="footer-dark" style="background: var(--secondary);padding-top: 0px;padding-bottom: 0px;">
+        <div class="footer-dark" style="background: var(--secondary);padding-top: 0px;padding-bottom: 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col item social"><a class="smoothScroll" href="#top"><i
+                                class="icon ion-android-arrow-up"></i></a></div>
+                </div>
+                <p class="copyright" style="color: var(--text-color);">XGN BOT © 2021</p>
+                <p class="copyright" style="color: var(--text-color);padding: 0px;">Need help?&nbsp;<a
+                        style="color: #bbb;" href="https://discord.gg/8V62RTS25Q">Support Guild</a></p>
+                <p class="copyright" style="color: var(--text-color); padding: 0px;">Currently our little gnomes
+                    are working to provide the best expirience</p>
+            </div>
+        </div>
+        <script src="../static/assets/js/jquery.min.js"></script>
+        <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../static/assets/js/untitled.js"></script>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <script>
+            const invite = () => {
+                window.open('https://cutt.ly/XGNbot', 'Invite', 'width=450,height=750')
+                location.reload()
+            }
+        </script>
+    </div>
+</body>
+
+</html>

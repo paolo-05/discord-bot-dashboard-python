@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XGN BOT Dashboard - {{guild['name']}}</title>
+  <meta name="description" content="XGN BOT is a very powerfull bot">
+  <meta name="theme-color" content="#00aaff">
+  <link rel="icon" type="image/png" sizes="300x250" href="../static/assets/img/superthumb.png">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+  <link rel="stylesheet" href="../static/assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/assets/fonts/ionicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet" href="../static/assets/css/styles.css">
+  <link rel="stylesheet" href="../static/assets/css/side-bar.css">
+  <!-- Boxiocns CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      homeRoute()
+    }
+  </script>
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i class='bx bxl-discord'></i>
+      <span class="logo_name">XGN BOT</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a OnClick="homeRoute()">
+          <i class='bx bx-home'></i>
+          <span class="link_name">Server</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="homeRoute()">Server</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="welcomeRoute()">
+          <i class='bx bx-log-in-circle'></i>
+          <span class="link_name">welcome</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="welcomeRoute()">Welcome</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="leaveRoute()">
+          <i class='bx bx-log-out-circle'></i>
+          <span class="link_name">Leave</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="leaveRoute()">Leave</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="levelRoute()">
+          <i class='bx bx-stats'></i>
+          <span class="link_name">Leveling System</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="levelRoute()">Leveling System</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="logRoute()">
+          <i class='bx bx-history'></i>
+          <span class="link_name">Logging</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="logRoute()">Logging</a></li>
+        </ul>
+      </li>
+      <li>
+        <a OnClick="settingsRoute()">
+          <i class='bx bx-cog'></i>
+          <span class="link_name">Settings</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" OnClick="settingsRoute()">Settings</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/leaderboard/{{guild['id']}}">
+          <i class='bx bx-align-justify'></i>
+          <span class="link_name">Leaderboard</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/leaderboard/{{guild['id']}}">Leaderboard</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/dashboard">
+          <i class='bx bx-arrow-back'></i>
+          <span class="link_name">Back to Servers List</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/dashboard">Back to Server List</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="profile-details">
+          <div class="profile-content">
+            <img src="https://cdn.discordapp.com/avatars/{{user['id']}}/{{user['avatar']}}.png" alt="">
+          </div>
+          <div class="name-job">
+            <div class="profile_name">{{user['username']}}#{{user['discriminator']}}</div>
+          </div>
+          <a href="/logout"><i class='bx bx-log-out'></i></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section" style="background: #2c2f33;">
+    <div class="home-content">
+      <i class='bx bx-menu'></i>
+      <span class="text ">
+        <h1 style="color: var(--text-color); margin-top:20px;">
+          {% if guild['icon'] %}
+          <img style="width: 50px; border-radius: 50%"
+            src="https://cdn.discordapp.com/icons/{{guild['id']}}/{{guild['icon']}}.png?size=64">
+          {% else %}
+          <img style="width: 50px; border-radius: 50%"
+            src="https://www.shitpostbot.com/resize/585/400?img=%2Fimg%2Fsourceimages%2Fdefault-discord-icon-5b254285e1034.png">
+          {% endif %}
+          {{guild['name']}}
+        </h1>
+      </span>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="features-boxed" style="background: #2c2f33;" id="home">
+            <div class="card" style="border-radius: 30px; background: var(--background);" id="info">
+              <div class="card-body">
+                <h1 style="color: var(--main-color);">Server Info</h1>
+                <p style="color: var(--text-color);">Members: <b
+                    style="color: var(--secondary-text-color);">{{members}}</b>
+                </p>
+                <p style="color: var(--text-color);">Real people: <b
+                    style="color: var(--secondary-text-color);">{{people}}</b></p>
+                <p style="color: var(--text-color);">Bots: <b
+                    style="color: var(--secondary-text-color);">{{bot_count}}</b>
+                </p>
+                <p style="color: var(--text-color);">Text Chanels: <b
+                    style="color: var(--secondary-text-color);">{{tc}}</b>
+                </p>
+                <p style="color: var(--text-color);">Voice Channels: <b
+                    style="color: var(--secondary-text-color);">{{voice_c}}</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% block section %}{% endblock %}
+</body>

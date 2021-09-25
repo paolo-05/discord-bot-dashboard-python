@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGN BOT Dashboard - {{guild['name']}}</title>
+    <meta name="description" content="XGN BOT is a very powerfull bot">
+    <meta name="theme-color" content="#00aaff">
+    <link rel="icon" type="image/png" sizes="300x250" href="../static/assets/img/superthumb.png">
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="../static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+</head>
+
+<body style="background-color: var(--background)">
+    <div id="top" style="height: 12px;">
+        <nav class="navbar navbar-light navbar-expand fixed-top"
+            style="color: var(--main-color);border-top-width: 6px;border-top-style: solid;background: var(--background);">
+            <div class="container-fluid"><a class="navbar-brand" href="#"
+                    style="color: var(--main-color);font-family: 'Alfa Slab One', cursive;">XGN BOT</a><button
+                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                        navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link active smoothScroll" href="/"
+                                style="color: var(--text-color);">See Features</a></li>
+                        <li class="nav-item"><a class="nav-link smoothScroll" href="/"
+                                style="color: var(--text-color);">Commands</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                onClick="window.open('https://cutt.ly/XGNbot', 'Invite', 'width=450,height=750')"
+                                style="color: var(--text-color);">Invite</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/dashboard"
+                                style="color: var(--main-color);">Dashboard</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="https://discord.gg/8V62RTS25Q"
+                                style="color: var(--text-color);">Support Guild</a></li>
+                        <!--<li class="nav-item"><a class="nav-link" style="color: var(--text-color);">|</a></li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--text-color);">Prefix</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--text-color);">Welcome</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--text-color);">Leave</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--text-color);">Leveling</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="" style="color: var(--text-color);">Logging</a>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <header class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center"
+        style="height: 418px;text-align: center; margin-top: 150px; margin-bottom: 100px">
+        <div style="text-align: center;">
+            <h1 style="color: var(--text-color)">
+                {% if guild['icon'] %}
+                <img style="width: 50px; border-radius: 50%"
+                    src="https://cdn.discordapp.com/icons/{{guild['id']}}/{{guild['icon']}}.png?size=64">
+                {% else %}
+                <img style="width: 50px; border-radius: 50%"
+                    src="https://www.shitpostbot.com/resize/585/400?img=%2Fimg%2Fsourceimages%2Fdefault-discord-icon-5b254285e1034.png">
+                {% endif %}
+                {{guild['name']}}
+            </h1>
+        </div><br>
+        <p style="color: var(--secondary-text-color);">For the welcome message,<br> you can use <b
+                style="color: var(--main-color)">{mention}</b> to mention
+            the
+            user,<br> <b style="color: var(--main-color)">{guild}</b> for the guild name and <b
+                style="color: var(--main-color)">{members}</b> <br>for the
+            number of the guild members.<br><br>
+            For the Leave message use <b style="color: var(--main-color)">{}</b> to mention<br> the member that has
+            leaved the serve.<br><br>
+            For the level up message use <b style="color: var(--main-color)">{mention}</b><br> to mention the user
+            and<br> <b style="color: var(--main-color)">{level}</b> for the level.</p>
+    </header>
+    <div id="feature" style="height: 90px;background: var(--secondary);">
+        <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="var(--background)" fill-opacity="1"
+                    d="M0,96L40,112C80,128,160,160,240,144C320,128,400,64,480,48C560,32,640,64,720,69.3C800,75,880,53,960,58.7C1040,64,1120,96,1200,96C1280,96,1360,64,1400,48L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+                </path>
+            </svg>
+        </div>
+    </div>
+    <div style="background: var(--secondary);" class="features-boxed">
+        <div class="container">
+            <br><br>
+            <div class="card" style="background: var(--background); border-radius: 30px;">
+                <div class="card-body">
+                    <div class="prefix">
+                        <h2>Prefix: {{prefix}}</h2>
+                        <label for="prefix">Select the prefix for the server</label>
+                        <input placeholder="prefix" type="text" maxlength="5" id="prefix" class="form-control"
+                            style="width:200px; color:var(--text-color); background: #2c2f33;"><br>
+                        <button onclick="changePrefix()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary); float: left;">Save</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card" style="background: var(--background); border-radius: 30px;" id="welcome">
+                <div class="card-body">
+                    <div>
+                        <h2>Welcomeing Members</h2>
+                        {% if welcome_enabled %}
+
+                        <p>current config:
+                        <ul>
+                            {% if welcome_channel and welcome_message %}
+                            <li>message: <b style="color: var(--main-color)">{{welcome_message}}</b></li>
+                            <li>channel: {{welcome_channel}}</li>
+                            {%else%}
+                            <li>channel: <b style="color: var(--main-color)">none</b></li>
+                            <li>channel: none</li>
+                            {% endif %}
+                        </ul>
+                        </p>
+                        <br>
+                        <label for="w-c">Select the channel for the welcome message</label><br>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                            style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);"
+                            id="welcome-channel">
+                            <option selected>Select the channel</option>
+                            {% for channel in text_channels %}
+                            <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                            {%endfor%}
+                        </select>
+                        <br>
+                        <br>
+                        <label for="welcome">Select the message for the welcome event</label>
+
+                        {% if welcome_channel and welcome_message %}
+                        <textarea placeholder="message" type="text"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" id=" welcome-message"
+                            class="form-control" rows="3"></textarea>
+
+                        {% else %}
+                        <textarea placeholder="message" type="text"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" id="welcome-message"
+                            value="Welcome {mention} in {guild}. You are the member {members}" class="form-control"
+                            rows="3"></textarea>
+                        {% endif %}
+
+                        <br>
+                        <button onclick="changeWelcome()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Save</button>
+                        <button onclick="disableWelcome()" button type="button" class="btn btn-outline-light"
+                            style="background: red; float: right;">Disable</button><br>
+
+                        {% else %}
+                        <button onclick="enableWelcome()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Enable</button><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card" style="background: var(--background); border-radius: 30px;" id="leave">
+                <div class="card-body">
+                    <div>
+                        <h2>Leave Message</h2>
+                        {% if leave_enabled %}
+
+                        <p>current config:
+                        <ul>
+                            {% if leave_channel and leave_message %}
+                            <li>message: <b style="color: var(--main-color)">{{leave_message}}</b></li>
+                            <li>channel: {{leave_channel}}</li>
+                            {%else%}
+                            <li>message: <b style="color: var(--main-color)">none</b></li>
+                            <li>channel: none</li>
+                            {% endif %}
+                        </ul>
+                        </p>
+                        <br>
+                        <label for="leav-c">Select the channel for the leave message</label><br>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                            style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);"
+                            id="leave-channel">
+                            <option selected>Select the channel</option>
+                            {% for channel in text_channels %}
+                            <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                            {%endfor%}
+                        </select>
+                        <br>
+                        <br>
+                        <label for="leave">Select the mesage used by the bot when someone leaves your server</label>
+
+                        {% if leave_message %}
+                        <textarea placeholder="message"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" type="text"
+                            id="leave-message" class="form-control" rows="3"></textarea>
+                        {% else %}
+                        <textarea placeholder="message"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" type="text"
+                            id="leave-message" class="form-control" value="{} left the server. :|" rows="3"></textarea>
+                        {% endif %}
+
+                        <br>
+                        <button onclick="changeLeave()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Save</button>
+                        <button onclick="disableLeave()" button type="button" class="btn btn-outline-light"
+                            style="background: red; float: right;">Disable</button><br>
+
+                        {% else %}
+                        <button onclick="enableLeave()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Enable</button><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card" style="background: var(--background); border-radius: 30px;" id="levels">
+                <div class="card-body">
+                    <div>
+                        <h2>Leveling</h2>
+                        {% if level_up_enabled %}
+
+                        <p>current config:
+                        <ul>
+                            {% if level_channel and level_message %}
+                            <li>message: <b style="color: var(--main-color)">{{level_message}}</b></li>
+                            <li>channel: {{level_channel}}</li>
+                            {%else%}
+                            <li>message: <b style="color: var(--main-color)">none</b></li>
+                            <li>channel: none</li>
+                            {% endif %}
+                        </ul>
+                        </p>
+                        <br>
+                        <label for="lev-c">Select the channel for the level up message</label><br>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                            style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);"
+                            id="level-channel">
+                            <option selected>Select the channel</option>
+                            {% for channel in text_channels %}
+                            <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                            {%endfor%}
+                        </select>
+                        <br>
+                        <br>
+                        <label for="level">Select the message for the level up message</label>
+                        {% if level_message %}
+                        <textarea placeholder="message" type="text"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" id="level-message"
+                            class="form-control" rows="3"></textarea>
+                        {% else %}
+                        <textarea placeholder="message" type="text"
+                            style="color:var(--text-color); background: #2c2f33; width:500px" id="level-message"
+                            class="form-control" rows="3"
+                            value="{mention} has leveled up - current level {level}"></textarea>
+                        {%endif%}
+
+                        <br>
+                        <button onclick="changeLevels()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Save</button>
+                        <button onclick="disableLevels()" button type="button" class="btn btn-outline-light"
+                            style="background: red; float: right;">Disable</button><br>
+
+                        {% else %}
+                        <button onclick="enableLevels()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Enable</button><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="card" style="background: var(--background); border-radius: 30px;" id="log">
+                <div class="card-body">
+                    <div>
+                        <h2>Logging Events</h2>
+                        {% if log_enabled %}
+
+                        <p>current config:
+                        <ul>
+                            {% if log_channel %}
+                            <li>channel: {{log_channel}}</li>
+                            {%else%}
+                            <li>channel: none</li>
+                            {% endif %}
+                        </ul>
+                        </p>
+                        <br>
+                        <label for="log-c">Select the channel for the log message</label><br>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg"
+                            style="border-radius: 10px; background-color:#2c2f33; color: var(--text-color);"
+                            id="log-channel">
+                            <option selected>Select the channel</option>
+                            {% for channel in text_channels %}
+                            <option value="{{ channel['id'] }}" %>{{ channel['name'] }}</option>
+                            {%endfor%}
+                        </select>
+                        <br>
+                        <br>
+                        <button onclick="changeLog()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Save</button>
+                        <button onclick="disableLog()" button type="button" class="btn btn-outline-light"
+                            style="background: red; float: right;">Disable</button>
+                        <br>
+
+                        {% else %}
+                        <button onclick="enableLog()" button type="button" class="btn btn-outline-light"
+                            style="background: var(--secondary);">Enable</button><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: var(--background);">
+        <div style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M-41.53,-9.56 C167.83,173.98 302.14,-60.89 534.09,89.10 L500.00,0.00 L0.00,0.00 Z"
+                    style="stroke: none; fill: var(--secondary);"></path>
+            </svg>
+        </div>
+    </div>
+    <div>
+        <section>
+            <div class="container-fluid text-white justify-content-center">
+                <div class="row row-cols-3 justify-content-center" style="color: var(--secondary-text-color);">
+                    <div class="col-auto col-md-6 col-lg-4 text-center pb-5 pt-5 number-item love_counter">
+                        <h1 class="love_count" style="font-size: 70px;"><strong>{{ guilds }}</strong></h1>
+                        <h4 style="color: var(--main-color);margin-top: -6px;">Total Servers</h4>
+                    </div>
+                    <div class="col-auto col-lg-4 text-center align-self-center pb-5 pt-5 love_counter">
+                        <h1 class="love_count" style="font-size: 70px;">
+                            <strong">{{ users }}</strong>
+                        </h1>
+                        <h4 style="color: var(--main-color);margin-top: -6px;">Total Users</h4>
+                    </div>
+                    <div class="col-auto col-lg-4 text-center align-self-center pb-5 pt-5 love_counter">
+                        <h1 style="font-size: 70px;"><strong>{{ ping }}ms</strong></h1>
+                        <h4 style="color: var(--main-color);margin-top: -6px;">Latency</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="var(--secondary)" fill-opacity="1"
+            d="M0,160L48,154.7C96,149,192,139,288,154.7C384,171,480,213,576,218.7C672,224,768,192,864,181.3C960,171,1056,181,1152,192C1248,203,1344,213,1392,218.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        </path>
+    </svg>
+    <div class="footer-dark" style="background: var(--secondary);padding-top: 0px;padding-bottom: 0px;">
+        <div class="footer-dark" style="background: var(--secondary);padding-top: 0px;padding-bottom: 0px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col item social"><a class="smoothScroll" href="#top"><i
+                                class="icon ion-android-arrow-up"></i></a></div>
+                </div>
+                <p class="copyright" style="color: var(--text-color);">XGN BOT © 2021</p>
+                <p class="copyright" style="color: var(--text-color);padding: 0px;">Need help?&nbsp;<a
+                        style="color: #bbb;" href="https://discord.gg/8V62RTS25Q">Support Guild</a></p>
+                <p class="copyright" style="color: var(--text-color); padding: 0px;">Currently our little
+                    gnomes
+                    are working to provide the best expirience</p>
+            </div>
+        </div>
+        <!--<script type="text/javascript">
+            const eW = () => {
+                if (document.getElementById('welcome').style.display == 'none') {
+                    document.getElementById('welcome').style.display = 'block';
+                }
+                else if (document.getElementById('welcome') == 'block') {
+                    document.getElementById('welcome').style.display == 'none'
+                }
+            }
+            const eL = () => {
+                if (document.getElementById('leave').style.display == 'none') {
+                    document.getElementById('leave').style.display = 'block';
+                }
+                else if (document.getElementById('leave') == 'block') {
+                    document.getElementById('leave').style.display == 'none'
+                }
+            }
+        </script>-->
+        <script src="../static/ApiRequests.js"></script>
+        <script src="../static/assets/js/jquery.min.js"></script>
+        <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../static/assets/js/Counting.js"></script>
+        <script src="../static/assets/js/untitled.js"></script>
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    </div>
+</body>
+
+</html>

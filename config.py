@@ -1,0 +1,9 @@
+CLIENT_ID = ""
+LOGIN_URL = ""
+REDIRECT_URI = ""
+CLIENT_SECRET = ""
+BOT_TOKEN = ""
+BOT_API_URL = ""
+
+LOGIN_URL_ = ""
+REDIRECT_URI_ = ""

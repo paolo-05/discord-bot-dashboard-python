@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{%  %}
+<section class="home-section" style="background: #2c2f33;">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <span class="text ">
+            <h1 style="color: var(--text-color); margin-top:20px;">
+                {% if guild['icon'] %}
+                <img style="width: 50px; border-radius: 50%"
+                src="https://cdn.discordapp.com/icons/{{guild['id']}}/{{guild['icon']}}.png?size=64">
+                {% else %}
+                <img style="width: 50px; border-radius: 50%"
+                src="https://www.shitpostbot.com/resize/585/400?img=%2Fimg%2Fsourceimages%2Fdefault-discord-icon-5b254285e1034.png">
+                {% endif %}
+                {{guild['name']}}
+            </h1>
+        </span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="features-boxed" style="background: #2c2f33;" id="home">
+                    <div class="card" style="border-radius: 30px; background: var(--background);" id="info">
+                        <div class="card-body">
+                            <h1 style="color: var(--main-color);">Server Info</h1>
+                            <p style="color: var(--text-color);">Members: <b
+                            style="color: var(--secondary-text-color);">{{members}}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Real people: <b
+                            style="color: var(--secondary-text-color);">{{people}}</b></p>
+                            <p style="color: var(--text-color);">Bots: <b
+                            style="color: var(--secondary-text-color);">{{bot_count}}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Text Chanels: <b
+                            style="color: var(--secondary-text-color);">{{tc}}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Voice Channels: <b
+                            style="color: var(--secondary-text-color);">{{voice_c}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="border-radius: 30px; background: var(--background);" id="plugins">
+                    <div class="card-body">
+                        <h1 style="color: var(--main-color);">Plugins</h1>
+                        <p style="color: var(--text-color);">welcome: <b style="color: var(--secondary-text-color);">{% if
+                            welcome_enabled %} <button style="background: #008000;" button type="button"
+                            class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                            type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Leave: <b style="color: var(--secondary-text-color);">{% if
+                            leave_enabled %} <button style="background:#008000;" button type="button"
+                            class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                            type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Level system: <b style="color: var(--secondary-text-color);">{% if
+                            level_up_enabled %} <button style="background: #008000;" button type="button"
+                            class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                            type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+                            </p>
+                            <p style="color: var(--text-color);">Logging: <b style="color: var(--secondary-text-color);">{% if
+                            log_enabled %} <button style="background: #008000;" button type="button"
+                            class="btn btn-outline-light">Enabled</button>{%else %} <button style="background: #ff0000" button
+                            type="button" class="btn btn-outline-light">Disabled</button>{% endif %}</b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
